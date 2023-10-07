@@ -7,9 +7,13 @@ public class GerenciaBanco {
 
         User usr;
         usr = new User();
-
-        usr.coletaDados();
+        String[] tempString = usr.coletaDados();
+        System.out.println("O documento digitado foi: " + tempString[0]);
+        System.out.println("O nome digitado foi: " +tempString[1]);
+        System.out.println("O sobrenome digitado foi: " +tempString[2]);
         
-        usr.checaBd();
+        DbFunctions dbf;
+        dbf = new DbFunctions();
+        dbf.checaBd(); 
     }
 }
