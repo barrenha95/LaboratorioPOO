@@ -37,4 +37,25 @@ public class DbFunctions {
             }
 
         }
+
+        public void leituraBd() {
+            File f = new File("database.txt"); /*Indica o arquivo que deve ser lido*/
+
+            try{
+                FileReader fr = new FileReader(f); /*Usado para fazer leitura de arquivos*/    
+                BufferedReader br = new BufferedReader(fr); /*Traz uma serie de funcionalidade na leitura de texto*/
+                System.out.println("BufferReader criado com sucesso!");  
+                String st;
+                while ((st = br.readLine()) != null){
+                System.out.println(st);
+                }
+                
+          }catch(FileNotFoundException ex){
+                System.out.println("Bd nao encontrado!");  
+                
+          }catch(IOException e){
+                System.out.println("Erro!");  
+          }        
+                        
+       }
 }
