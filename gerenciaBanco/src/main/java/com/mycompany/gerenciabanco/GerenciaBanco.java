@@ -10,5 +10,6 @@ public class GerenciaBanco {
 
         usr.coletaDados();
         
+        usr.checaBd();
     }
 }

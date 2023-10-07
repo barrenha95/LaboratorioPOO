@@ -1,12 +1,14 @@
 package com.mycompany.gerenciabanco;
 
 import java.util.*;
+import java.io.*;
 
 public class User {
     
     public char name;
     public char lastName;
-    public long  document;
+    public long document;
+    public int  flagbd;
 
     public User(){} // Metodo construtor
 
@@ -17,6 +19,21 @@ public class User {
         document = myObj.nextLong();  // Read user input
         System.out.println("Voce digitou o documento: " + document);  // Output user input
         return document;
+    }
+    
+    public void checaBd(){
+        try
+        {
+            File f = new File("../database.txt");
+            PrintWriter pw = new PrintWriter(new FileOutputStream(f, true));
+            System.out.println("Database localizado com sucesso.");
+        }
+        catch(Exception e)
+        {
+            System.out.println("Database nao localizado.");
+            
 
-}
+        }
+    }
+
 }
