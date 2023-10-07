@@ -4,19 +4,30 @@ import java.util.*;
 
 public class User {
     
-    public char name;
-    public char lastName;
-    public long  document;
+    public String name; // Declara as variaveis
+    public String lastName;
+    public String document;
 
     public User(){} // Metodo construtor
 
-    public long coletaDados(){
-        Scanner myObj = new Scanner(System.in);  // Create a Scanner object
+    public String[] coletaDados(){
+        Scanner myObj = new Scanner(System.in);  // Scanner para ler inputs
+
         System.out.println("Digite o seu documento (apenas numeros)");
+        document = myObj.nextLine();  // Leitura do input do usuario
+        /*System.out.println("Voce digitou o documento: " + document + "\n");*/
+        
+        System.out.println("Digite o seu nome (minusculo)");
+        name = myObj.nextLine();  // Leitura do input do usuario
+        /*System.out.println("Voce digitou o nome: " + name + "\n");*/
 
-        document = myObj.nextLong();  // Read user input
-        System.out.println("Voce digitou o documento: " + document);  // Output user input
-        return document;
+        System.out.println("Digite o seu sobrenome (minusculo)");
+        lastName = myObj.nextLine();  // Leitura do input do usuario
+        /*System.out.println("Voce digitou o sobrenome: " + lastName + "\n");*/
+        
+        String[] tempString = {document, name, lastName}; 
+        return tempString;
+    }
 
-}
+
 }
