@@ -1,6 +1,9 @@
 package com.mycompany.gerenciabanco;
 
+import java.io.BufferedReader;
 import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
 
@@ -23,11 +26,11 @@ public class DbFunctions {
             String tmpNome = StringInserida[1];
             String tmpSobreNome = StringInserida[2];
 
-            String wtString  =  tmpCpf + ";" + tmpNome + ";" + tmpSobreNome;
+            String wtString  =  "\n"+ tmpCpf + ";" + tmpNome + ";" + tmpSobreNome;
             System.out.println("Voce esta salvando esses dados no banco: " + wtString);
 
             try {
-                FileWriter myWriter = new FileWriter("database.txt");
+                FileWriter myWriter = new FileWriter("database.txt", true);
                 myWriter.write(wtString);
                 myWriter.close();
                 System.out.println("Dados salvos com sucesso");
