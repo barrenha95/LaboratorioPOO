@@ -16,7 +16,6 @@ public class GerenciaBanco {
         dbf = new DbFunctions(); 
         dbf.checaBd(); // Checa se o arquivo "database.txt" ja existe, se nao existir ja cria
 
-        dbf.escreveBd(usrString);
-        dbf.leituraBd();
+        dbf.leituraBd(usrString);
     }
 }

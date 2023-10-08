@@ -21,6 +21,7 @@ public class DbFunctions {
             e.printStackTrace(); // Caso falhe, retorna o erro
         }   
     }
+    
         public void escreveBd(String[] StringInserida){
             String tmpCpf = StringInserida[0];
             String tmpNome = StringInserida[1];
@@ -41,7 +42,7 @@ public class DbFunctions {
 
         }
 
-        public void leituraBd() {
+        public void leituraBd(String[] StringInserida) {
             File f = new File("database.txt"); /*Indica o arquivo que deve ser lido*/
 
             try{
@@ -49,8 +50,14 @@ public class DbFunctions {
                 BufferedReader br = new BufferedReader(fr); /*Traz uma serie de funcionalidade na leitura de texto*/
                 System.out.println("BufferReader criado com sucesso!");  
                 String st;
-                while ((st = br.readLine()) != null){
-                System.out.println(st);
+                while ((st = br.readLine()) != null){ /*Enquanto a linha lida nao for nula*/
+                if(st.matches(StringInserida[0]+"(.*)")){ /*Confere se  o documento inserido pelo usuario esta no bd*/
+                    System.out.println("Documento ja localizado na tabela!");
+                    break; /*Encerra o loop para que nao fique executando ja tendo achado o documento*/
+                }
+                if((st = br.readLine()) == null){
+                    escreveBd(StringInserida);
+                }
                 }
                 
           }catch(FileNotFoundException ex){
