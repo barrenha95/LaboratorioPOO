@@ -8,9 +8,9 @@ import java.io.FileWriter;
 import java.io.IOException;
 
 public class DbFunctions {
-        public void checaBd(){
+        public void checaBd(String Arquivo){
         try{
-            File f = new File("database.txt"); // Indica qual arquivo queremos manipular
+            File f = new File( Arquivo +".txt"); // Indica qual arquivo queremos manipular
             if(f.createNewFile()){ //Tenta criar um arquivo com o nome dado
                 System.out.println("Database criado!"); //Se nao der erro ele cria
             }else{
@@ -68,4 +68,5 @@ public class DbFunctions {
           }        
                         
        }
+       
 }
