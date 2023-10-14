@@ -3,6 +3,7 @@ package com.mycompany.gerenciabanco;
 public class GerenciaBanco {
 
     public static void main(String[] args) {
+        
         System.out.println("Ola! Seja bem vindo ao sistema bancário");
 
         User usr; // Chama a classe user: Centralizei nesta classe tudo que diz respeito ao usuario
@@ -16,6 +17,36 @@ public class GerenciaBanco {
         dbf = new DbFunctions(); 
         dbf.checaBd(); // Checa se o arquivo "database.txt" ja existe, se nao existir ja cria
 
-        dbf.leituraBd(usrString);
+        dbf.leituraBd(usrString); //
+        
+        int iterador = 0;
+
+        while(iterador != 1){
+        
+            int inputMenu = usr.opcoesMenu();            
+            switch(inputMenu){
+                case 1:
+                    System.out.println("Seu saldo e: ");
+                    iterador++;
+                    break;
+                case 2:
+                    System.out.println("Qual valor voce deseja depositar?");
+                    iterador++;
+                    break;
+                case 3:
+                    System.out.println("Qual valor voce deseja sacar?");
+                    iterador++;
+                    break;
+                case 0:
+                    System.out.println("Muito obrigado por ser cliente do banco POO! \n"+
+                    "Ate a proxima!");
+                    iterador++;
+                    break;
+                default:
+                    System.out.println("Opcao invalida. Selecione um valor presente nas opcoes abaixo:");
+            }
+        }
+
+        
     }
 }

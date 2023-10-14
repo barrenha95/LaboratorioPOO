@@ -7,6 +7,7 @@ public class User {
     public String name; // Declara as variaveis
     public String lastName;
     public String document;
+    public int inputMenu;
 
     public User(){} // Metodo construtor
 
@@ -29,5 +30,19 @@ public class User {
         return tempString;
     }
 
+    public int opcoesMenu(){
+        Scanner myObj = new Scanner(System.in);  // Scanner para ler inputs
+
+        //System.out.println("Pressione enter para acessar o sistema.");
+        //myObj.nextLine();
+        
+        System.out.println("\n" + "Para acessar seu saldo digite 1 \n"+
+                           "Para fazer um deposito digite 2 \n"+
+                           "Para fazer um saque digite 3 \n"+
+                           "Para sair digite 0 \n");                           
+        
+        inputMenu = myObj.nextInt();  // Leitura do input do usuario
+        return inputMenu;
+    }
 
 }
