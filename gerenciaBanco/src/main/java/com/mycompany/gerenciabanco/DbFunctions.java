@@ -6,6 +6,7 @@ import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
+import java.util.ArrayList;
 
 public class DbFunctions {
         public void checaBd(String Arquivo){
@@ -22,16 +23,16 @@ public class DbFunctions {
         }   
     }
     
-        public void escreveBd(String[] StringInserida){
-            String tmpCpf = StringInserida[0];
-            String tmpNome = StringInserida[1];
-            String tmpSobreNome = StringInserida[2];
+        public void escreveBd(String[] StringInserida, String Arquivo){
+            String tmp1 = StringInserida[0];
+            String tmp2 = StringInserida[1];
+            String tmp3 = StringInserida[2];
 
-            String wtString  =  "\n"+ tmpCpf + ";" + tmpNome + ";" + tmpSobreNome;
+            String wtString  =  "\n"+ tmp1 + ";" + tmp2 + ";" + tmp3;
             //System.out.println("Voce esta salvando esses dados no banco: " + wtString);
 
             try {
-                FileWriter myWriter = new FileWriter("database.txt", true);
+                FileWriter myWriter = new FileWriter(Arquivo +".txt", true);
                 myWriter.write(wtString);
                 myWriter.close();
                 System.out.println("Dados salvos com sucesso");
@@ -42,30 +43,39 @@ public class DbFunctions {
 
         }
 
-        public void leituraBd(String[] StringInserida) {
-            File f = new File("database.txt"); /*Indica o arquivo que deve ser lido*/
+        public String leituraBd(String[] StringInserida, String Arquivo) {
+            File f = new File(Arquivo +".txt"); /*Indica o arquivo que deve ser lido*/
+            ArrayList<String> arr = new ArrayList<String>();
+            String listaRetornos = new String();
 
             try{
                 FileReader fr = new FileReader(f); /*Usado para fazer leitura de arquivos*/    
                 BufferedReader br = new BufferedReader(fr); /*Traz uma serie de funcionalidade na leitura de texto*/
                 //System.out.println("BufferReader criado com sucesso!");  
-                String st;
-                while ((st = br.readLine()) != null){ /*Enquanto a linha lida nao for nula*/
-                if(st.matches(StringInserida[0]+"(.*)")){ /*Confere se  o documento inserido pelo usuario esta no bd*/
+                String line ;
+
+                while ( (line= br.readLine()) != null){ /*Enquanto a linha lida nao for nula*/
+                if(line.matches(StringInserida[0]+"(.*)")){ /*Confere se  o documento inserido pelo usuario esta no bd*/
                     System.out.println("Documento localizado com sucesso!");
-                    break; /*Encerra o loop para que nao fique executando ja tendo achado o documento*/
+                    arr.add(line);
+                    //break; /*Encerra o loop para que nao fique executando ja tendo achado o documento*/
                 }
-                if((st = br.readLine()) == null){
-                    escreveBd(StringInserida);
+                if((line = br.readLine()) == null){
+                    System.out.println("Documento nao localizado!");
                 }
                 }
+                br.close();
+                listaRetornos = String.join(", ", arr);        
+                return(listaRetornos);
                 
           }catch(FileNotFoundException ex){
-                System.out.println("Bd nao encontrado!");  
+                System.out.println("Bd nao encontrado!");
+                return(listaRetornos);  
                 
           }catch(IOException e){
                 System.out.println("Erro!");  
-          }        
+                return(listaRetornos);  
+          }
                         
        }
        

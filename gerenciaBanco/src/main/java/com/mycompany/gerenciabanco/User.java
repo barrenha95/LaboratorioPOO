@@ -32,16 +32,22 @@ public class User {
 
     public int opcoesMenu(){
         Scanner myObj = new Scanner(System.in);  // Scanner para ler inputs
-
-        //System.out.println("Pressione enter para acessar o sistema.");
-        //myObj.nextLine();
         
         System.out.println("\n" + "Para acessar seu saldo digite 1 \n"+
                            "Para fazer um deposito digite 2 \n"+
                            "Para fazer um saque digite 3 \n"+
                            "Para sair digite 0 \n");                           
+                 
+        try {
+            inputMenu = Integer.parseInt(myObj.nextLine());
+        } catch (NumberFormatException e) {
+            inputMenu = 4;
+            //e.printStackTrace();
+        } catch (NoSuchElementException ee){
+            //ee.printStackTrace();
+            inputMenu = 4;
+        }
         
-        inputMenu = myObj.nextInt();  // Leitura do input do usuario
         return inputMenu;
     }
 

@@ -19,13 +19,18 @@ public class GerenciaBanco {
         dbf.checaBd("transaction"); // Checa se o arquivo "database.txt" ja existe, se nao existir ja cria
     
 
-        dbf.leituraBd(usrString); //
+        String temp = dbf.leituraBd(usrString, "database"); //
+//        System.out.println(temp);
+        if(temp.isEmpty()){
+            dbf.escreveBd(usrString, "database");
+        }
         
         int iterador = 0;
 
         while(iterador != 1){
         
-            int inputMenu = usr.opcoesMenu();            
+            int inputMenu = usr.opcoesMenu();
+            System.out.println(inputMenu);            
             switch(inputMenu){
                 case 1:
                     System.out.println("Seu saldo e: ");
