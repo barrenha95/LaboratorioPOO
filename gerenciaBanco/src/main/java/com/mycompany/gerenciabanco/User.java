@@ -65,9 +65,9 @@ public class User {
         try{
         System.out.println("Qual seria o valor desejado?\n");
         String value = myObj.nextLine();  // Leitura do input do usuario
-        int temporary = Integer.parseInt(value);
+        int temporary = Integer.parseInt(value); // Testa se ele pode ser convertido para integer
         System.out.println(temporary);
-        tempStringTransaction[2] = value;
+        tempStringTransaction[2] = value; // Salva o input na string
         iterador++;
         break;
 
@@ -77,8 +77,8 @@ public class User {
         }
         }
 
-        tempStringTransaction[0] = document;
-        tempStringTransaction[1] = timeStamp;
+        tempStringTransaction[0] = document; // Salva o documento da transacao
+        tempStringTransaction[1] = timeStamp; // Salva o momento em que a transacao foi feita
         
 
         return tempStringTransaction;
