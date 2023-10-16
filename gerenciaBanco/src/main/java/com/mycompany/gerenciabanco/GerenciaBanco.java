@@ -15,15 +15,22 @@ public class GerenciaBanco {
         
         DbFunctions dbf; // Chama a classe DbFunctions: Centralizei todas as operacoes com o "banco de dados" (no caso um .txt para simplificar o projeto)
         dbf = new DbFunctions(); 
-        dbf.checaBd(); // Checa se o arquivo "database.txt" ja existe, se nao existir ja cria
+        dbf.checaBd("database"); // Checa se o arquivo "database.txt" ja existe, se nao existir ja cria
+        dbf.checaBd("transaction"); // Checa se o arquivo "database.txt" ja existe, se nao existir ja cria
+    
 
-        dbf.leituraBd(usrString); //
+        String temp = dbf.leituraBd(usrString, "database"); //
+//        System.out.println(temp);
+        if(temp.isEmpty()){
+            dbf.escreveBd(usrString, "database");
+        }
         
         int iterador = 0;
 
         while(iterador != 1){
         
-            int inputMenu = usr.opcoesMenu();            
+            int inputMenu = usr.opcoesMenu();
+            System.out.println(inputMenu);            
             switch(inputMenu){
                 case 1:
                     System.out.println("Seu saldo e: ");
@@ -38,7 +45,7 @@ public class GerenciaBanco {
                     iterador++;
                     break;
                 case 0:
-                    System.out.println("Muito obrigado por ser cliente do banco POO! \n"+
+                    System.out.println("Muito obrigado por ser cliente do banco! \n"+
                     "Ate a proxima!");
                     iterador++;
                     break;
