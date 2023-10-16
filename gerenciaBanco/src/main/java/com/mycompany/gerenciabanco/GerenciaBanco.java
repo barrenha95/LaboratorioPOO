@@ -1,5 +1,8 @@
 package com.mycompany.gerenciabanco;
 
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
+
 public class GerenciaBanco {
 
     public static void main(String[] args) {
@@ -37,7 +40,13 @@ public class GerenciaBanco {
                     iterador++;
                     break;
                 case 2:
-                    System.out.println("Qual valor voce deseja depositar?");
+                    System.out.println("Opcao selecionada: Deposito");
+                    String[] transactionString = usr.coletaDadosTransacao(usrString[0]);
+                    System.out.println(transactionString[0]);
+                    System.out.println(transactionString[1]);
+                    System.out.println(transactionString[2]);
+
+                                                            
                     iterador++;
                     break;
                 case 3:
