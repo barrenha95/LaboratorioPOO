@@ -1,8 +1,5 @@
 package com.mycompany.gerenciabanco;
 
-import java.text.SimpleDateFormat;
-import java.util.Calendar;
-
 public class GerenciaBanco {
 
     public static void main(String[] args) {
@@ -46,6 +43,7 @@ public class GerenciaBanco {
                     System.out.println(transactionString[1]);
                     System.out.println(transactionString[2]);
 
+                    dbf.escreveBd(transactionString, "transaction");
                                                             
                     iterador++;
                     break;
