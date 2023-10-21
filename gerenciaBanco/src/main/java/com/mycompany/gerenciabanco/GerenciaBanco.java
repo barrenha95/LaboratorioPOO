@@ -30,11 +30,34 @@ public class GerenciaBanco {
         while(iterador != 1){
         
             int inputMenu = usr.opcoesMenu();
+
             System.out.println(inputMenu);            
             switch(inputMenu){
                 case 1:
-                    System.out.println("Seu saldo e: ");
-                    iterador++;
+                    int saldo = 0;
+                    String tempSaldo = dbf.leituraBd(usrString, "transaction"); //
+                    
+                    if(tempSaldo.isEmpty()){
+                        System.out.println("Voce nao possui nenhuma transacao registrada");
+                        saldo = 0;
+                    }else{
+                    //System.out.println(tempSaldo);
+                    String[] arrOfStr = tempSaldo.split(","); // quebra string em array de strings para separar cada uma das transacoes
+                    int size = arrOfStr.length; // conta a quantidade de transacoes localizadas 
+                    //System.out.println(size);
+                                        
+                    for(int i = 0; i < size; i++){ //para cada transacao
+                        System.out.println(i);
+                        System.out.println(arrOfStr[i]);
+                        int tempQuebra = Integer.parseInt(arrOfStr[i].split(";")[2]); // quebra a string separando o que e o valor transacionado
+                        saldo = saldo + tempQuebra; // soma o valor transacionado
+                    }
+
+                    }
+
+                    System.out.println("Seu saldo e: " + saldo);
+
+                    //iterador++;
                     break;
                 case 2:
                     System.out.println("Opcao selecionada: Deposito");
@@ -45,11 +68,11 @@ public class GerenciaBanco {
 
                     dbf.escreveBd(transactionString, "transaction");
                                                             
-                    iterador++;
+                    //iterador++;
                     break;
                 case 3:
                     System.out.println("Qual valor voce deseja sacar?");
-                    iterador++;
+                    //iterador++;
                     break;
                 case 0:
                     System.out.println("Muito obrigado por ser cliente do banco! \n"+
