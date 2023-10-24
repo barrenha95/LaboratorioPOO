@@ -29,6 +29,8 @@ public class GerenciaBanco {
         
         int iterador = 0;
         int saldo = 0;
+        int tempQuebra = 0;
+        int size = 0;
 
         while(iterador != 1){
         
@@ -45,14 +47,14 @@ public class GerenciaBanco {
                     }else{
                     //System.out.println(tempSaldo);
                     String[] arrOfStr = tempSaldo.split(","); // quebra string em array de strings para separar cada uma das transacoes
-                    int size = arrOfStr.length; // conta a quantidade de transacoes localizadas 
-                    //System.out.println(size);
+                    size = arrOfStr.length; // conta a quantidade de transacoes localizadas 
                     
                     saldo = 0;
                     for(int i = 0; i < size; i++){ //para cada transacao
-                        System.out.println(i);
-                        System.out.println(arrOfStr[i]);
-                        int tempQuebra = Integer.parseInt(arrOfStr[i].split(";")[2]); // quebra a string separando o que e o valor transacionado
+                        //System.out.println(i);
+                        //System.out.println(arrOfStr[i]);
+                        tempQuebra = Integer.parseInt(arrOfStr[i].split(";")[2]); // quebra a string separando o que e o valor transacionado
+                        //System.out.println(tempQuebra);
                         saldo = saldo + tempQuebra; // soma o valor transacionado
                     }
 
@@ -87,13 +89,14 @@ public class GerenciaBanco {
                     }else{
                     //System.out.println(tempSaldo);
                     String[] arrOfStr = tempSaldo.split(","); // quebra string em array de strings para separar cada uma das transacoes
-                    int size = arrOfStr.length; // conta a quantidade de transacoes localizadas 
+                    size = arrOfStr.length; // conta a quantidade de transacoes localizadas 
                     //System.out.println(size);
                                         
                     for(int i = 0; i < size; i++){ //para cada transacao
                         System.out.println(i);
                         System.out.println(arrOfStr[i]);
-                        int tempQuebra = Integer.parseInt(arrOfStr[i].split(";")[2]); // quebra a string separando o que e o valor transacionado
+                        tempQuebra = Integer.parseInt(arrOfStr[i].split(";")[2]); // quebra a string separando o que e o valor transacionado
+                        System.out.println(tempQuebra);
                         saldo = saldo + tempQuebra; // soma o valor transacionado
                     }
 

@@ -56,15 +56,15 @@ public class DbFunctions {
 
                 while ( (line= br.readLine()) != null){ /*Enquanto a linha lida nao for nula*/
                 if(line.matches(StringInserida[0]+"(.*)")){ /*Confere se  o documento inserido pelo usuario esta no bd*/
-                    System.out.println("Documento localizado com sucesso!");
+                    //System.out.println("Documento localizado com sucesso!");
                     arr.add(line);
                     //break; /*Encerra o loop para que nao fique executando ja tendo achado o documento*/
-                }
-                if((line = br.readLine()) == null){
+                }else{
                     System.out.println("Documento nao localizado!");
                 }
                 }
                 br.close();
+                fr.close();
                 listaRetornos = String.join(", ", arr);        
                 return(listaRetornos);
                 
