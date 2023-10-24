@@ -1,5 +1,6 @@
 package com.mycompany.gerenciabanco;
 
+import java.text.SimpleDateFormat;
 import java.util.*;
 
 public class User {
@@ -8,6 +9,8 @@ public class User {
     public String lastName;
     public String document;
     public int inputMenu;
+    public String value;
+    private int iterador;
 
     public User(){} // Metodo construtor
 
@@ -49,6 +52,36 @@ public class User {
         }
         
         return inputMenu;
+    }
+
+    public String[] coletaDadosTransacao(String document){
+        Scanner myObj = new Scanner(System.in);  // Scanner para ler inputs
+        String timeStamp = new SimpleDateFormat("yyyyMMdd_HHmmss").format(Calendar.getInstance().getTime()); // Pega a data-hora da transacao
+        iterador = 0;
+
+        String[] tempStringTransaction = new String[3];
+
+        while(iterador ==0){
+        try{
+        System.out.println("Qual seria o valor desejado?\n");
+        String value = myObj.nextLine();  // Leitura do input do usuario
+        int temporary = Integer.parseInt(value); // Testa se ele pode ser convertido para integer
+        System.out.println(temporary);
+        tempStringTransaction[2] = value; // Salva o input na string
+        iterador++;
+        break;
+
+        }catch(NumberFormatException ex){
+            //ex.printStackTrace();
+            System.out.println("Valor inserido nao permitido, tente novamente:\n");
+        }
+        }
+
+        tempStringTransaction[0] = document; // Salva o documento da transacao
+        tempStringTransaction[1] = timeStamp; // Salva o momento em que a transacao foi feita
+        
+
+        return tempStringTransaction;
     }
 
 }
